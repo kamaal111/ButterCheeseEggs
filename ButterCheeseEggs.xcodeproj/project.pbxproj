@@ -14,6 +14,7 @@
 		2CACA22A25BB48AF002E3617 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA22925BB48AF002E3617 /* HomeViewController.swift */; };
 		2CACA22F25BB48B2002E3617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CACA22E25BB48B2002E3617 /* Assets.xcassets */; };
 		2CACA23225BB48B2002E3617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CACA23025BB48B2002E3617 /* LaunchScreen.storyboard */; };
+		2CB5DC8825BC98F600A05A92 /* GameGridItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB5DC8725BC98F600A05A92 /* GameGridItemModel.swift */; };
 		2CBC3AC425BC7CC500382516 /* AppButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC3AC325BC7CC500382516 /* AppButtons.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		2CACA22E25BB48B2002E3617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CACA23125BB48B2002E3617 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CACA23325BB48B2002E3617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CB5DC8725BC98F600A05A92 /* GameGridItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridItemModel.swift; sourceTree = "<group>"; };
 		2CBC3AC325BC7CC500382516 /* AppButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +87,7 @@
 		2CACA22425BB48AF002E3617 /* ButterCheeseEggs */ = {
 			isa = PBXGroup;
 			children = (
+				2CB5DC8525BC98DC00A05A92 /* Models */,
 				2CA7552F25BC882D009DDC37 /* Extensions */,
 				2CA7552D25BC87FD009DDC37 /* Controllers */,
 				2CA7552B25BC87EC009DDC37 /* Views */,
@@ -95,6 +98,22 @@
 				2CACA23025BB48B2002E3617 /* LaunchScreen.storyboard */,
 			);
 			path = ButterCheeseEggs;
+			sourceTree = "<group>";
+		};
+		2CB5DC8525BC98DC00A05A92 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2CB5DC8625BC98E300A05A92 /* Structures */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2CB5DC8625BC98E300A05A92 /* Structures */ = {
+			isa = PBXGroup;
+			children = (
+				2CB5DC8725BC98F600A05A92 /* GameGridItemModel.swift */,
+			);
+			path = Structures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +188,7 @@
 				2C5B79FE25BC82C500A55D8A /* UIViewController+extensions.swift in Sources */,
 				2CACA22A25BB48AF002E3617 /* HomeViewController.swift in Sources */,
 				2CACA22625BB48AF002E3617 /* AppDelegate.swift in Sources */,
+				2CB5DC8825BC98F600A05A92 /* GameGridItemModel.swift in Sources */,
 				2CACA22825BB48AF002E3617 /* SceneDelegate.swift in Sources */,
 				2CA7552825BC87AA009DDC37 /* GameViewController.swift in Sources */,
 				2CBC3AC425BC7CC500382516 /* AppButtons.swift in Sources */,
