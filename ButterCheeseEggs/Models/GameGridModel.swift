@@ -19,7 +19,7 @@ class GameGridModel {
         ]
     }
 
-    func modifyGridItemPlayer(tag: Int, player: Players) -> Bool {
+    func modifyGridItem(tag: Int, player: Players) -> Bool {
         guard let gridItem = findGridItem(withTag: tag), gridItem.player == nil else { return false }
         let row = gridItem.row
         let column = gridItem.column

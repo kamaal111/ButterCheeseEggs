@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
     }
 
     private func setupView() {
-        self.title = "BCE"
+        self.title = "ButterCheeseEggs"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.view.addSubview(startButton)
         setupConstraints()

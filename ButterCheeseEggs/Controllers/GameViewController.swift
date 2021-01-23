@@ -99,18 +99,18 @@ class GameViewController: UIViewController {
         let screenHeight = screenSize.height
 
         NSLayoutConstraint.activate([
-            gameButton00.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 3 / 2),
+            gameButton00.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 6),
             gameButton00.trailingAnchor.constraint(equalTo: gameButton01.leadingAnchor),
             gameButton00.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton00.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
-            gameButton01.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 3 / 2),
+            gameButton01.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 6),
             gameButton01.centerXAnchor.constraint(equalTo: safeAreaCenterXAnchor),
             gameButton01.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton01.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
             gameButton02.leadingAnchor.constraint(equalTo: gameButton01.trailingAnchor),
-            gameButton02.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 3 / 2),
+            gameButton02.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 6),
             gameButton02.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton02.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
@@ -148,7 +148,7 @@ class GameViewController: UIViewController {
 
     @objc
     private func onGameButtonTap(_ sender: UIButton) {
-        guard gameGridModel.modifyGridItemPlayer(tag: sender.tag, player: gameModel.player) else { return }
+        guard gameGridModel.modifyGridItem(tag: sender.tag, player: gameModel.player) else { return }
         sender.setTitle(nil, for: .normal)
         let imageDimension = UIScreen.main.bounds.size.width / 5
         if gameModel.player == .crosses {

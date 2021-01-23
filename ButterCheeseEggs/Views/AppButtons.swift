@@ -12,6 +12,7 @@ struct AppButtons {
 
     static func ordinaryButton(title: String) -> UIButton {
         let button = UIButton(type: .system)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(title, for: .normal)
         return button
