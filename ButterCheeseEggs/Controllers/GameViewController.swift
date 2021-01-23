@@ -74,9 +74,9 @@ class GameViewController: UIViewController {
 
     private func setupViews() {
         self.title = "Game"
-        self.navigationItem.largeTitleDisplayMode = .never
         if #available(iOS 13.0, *) {
             self.view.backgroundColor = .systemBackground
+            self.navigationItem.largeTitleDisplayMode = .never
         } else {
             self.view.backgroundColor = .white
         }
@@ -95,26 +95,33 @@ class GameViewController: UIViewController {
     }
 
     private func setupConstraints() {
-        let safeAreaLayoutGuide = self.view.safeAreaLayoutGuide
-        let safeAreaCenterXAnchor = safeAreaLayoutGuide.centerXAnchor
-        let safeAreaTopAnchor = safeAreaLayoutGuide.topAnchor
+        let centerXAnchor: NSLayoutXAxisAnchor
+        let topAnchor: NSLayoutYAxisAnchor
+        if #available(iOS 11.0, *) {
+            let safeAreaLayoutGuide = self.view.safeAreaLayoutGuide
+            centerXAnchor = safeAreaLayoutGuide.centerXAnchor
+            topAnchor = safeAreaLayoutGuide.topAnchor
+        } else {
+            centerXAnchor = self.view.centerXAnchor
+            topAnchor = self.view.topAnchor
+        }
         let screenSize = UIScreen.main.bounds.size
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
 
         NSLayoutConstraint.activate([
-            gameButton00.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 6),
+            gameButton00.topAnchor.constraint(equalTo: topAnchor, constant: screenHeight / 6),
             gameButton00.trailingAnchor.constraint(equalTo: gameButton01.leadingAnchor),
             gameButton00.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton00.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
-            gameButton01.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 6),
-            gameButton01.centerXAnchor.constraint(equalTo: safeAreaCenterXAnchor),
+            gameButton01.topAnchor.constraint(equalTo: topAnchor, constant: screenHeight / 6),
+            gameButton01.centerXAnchor.constraint(equalTo: centerXAnchor),
             gameButton01.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton01.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
             gameButton02.leadingAnchor.constraint(equalTo: gameButton01.trailingAnchor),
-            gameButton02.topAnchor.constraint(equalTo: safeAreaTopAnchor, constant: screenHeight / 6),
+            gameButton02.topAnchor.constraint(equalTo: topAnchor, constant: screenHeight / 6),
             gameButton02.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton02.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
@@ -124,7 +131,7 @@ class GameViewController: UIViewController {
             gameButton10.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
             gameButton11.topAnchor.constraint(equalTo: gameButton01.bottomAnchor),
-            gameButton11.centerXAnchor.constraint(equalTo: safeAreaCenterXAnchor),
+            gameButton11.centerXAnchor.constraint(equalTo: centerXAnchor),
             gameButton11.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton11.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
@@ -139,7 +146,7 @@ class GameViewController: UIViewController {
             gameButton20.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
             gameButton21.topAnchor.constraint(equalTo: gameButton11.bottomAnchor),
-            gameButton21.centerXAnchor.constraint(equalTo: safeAreaCenterXAnchor),
+            gameButton21.centerXAnchor.constraint(equalTo: centerXAnchor),
             gameButton21.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton21.heightAnchor.constraint(equalToConstant: screenWidth / 4),
         

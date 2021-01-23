@@ -28,17 +28,27 @@ class HomeViewController: UIViewController {
 
     private func setupView() {
         self.title = "ButterCheeseEggs"
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
         self.view.addSubview(startButton)
         setupConstraints()
     }
 
     private func setupConstraints() {
-        let safeAreaLayoutGuide = self.view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([
-            startButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            startButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
-        ])
+        if #available(iOS 11.0, *) {
+            let safeAreaLayoutGuide = self.view.safeAreaLayoutGuide
+            NSLayoutConstraint.activate([
+                startButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+                startButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                startButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                startButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            ])
+        }
+        
     }
 
 }

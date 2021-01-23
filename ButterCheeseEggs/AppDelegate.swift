@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             window.backgroundColor = .white
         }
-        window.tintColor = UIColor(named: "AccentColor")
+        if #available(iOS 11.0, *) {
+            window.tintColor = UIColor(named: "AccentColor")
+        } else {
+            window.tintColor = UIColor(red: 0.911, green: 0.592, blue: 0.212, alpha: 1)
+        }
         let homeViewController = HomeViewController()
         let navigationController = UINavigationController(rootViewController: homeViewController)
         window.rootViewController = navigationController
