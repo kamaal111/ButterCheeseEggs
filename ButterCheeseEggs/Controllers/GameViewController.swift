@@ -9,57 +9,60 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    lazy var gameButton00: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "00")
-        button.tag = gameGrid[0][0].tag
+    var gameGridModel = GameGridModel()
+    var gameModel = GameModel()
+
+    lazy var gameButton00: GameButton = {
+        let button = AppButtons.gameButton(title: "00")
+        button.tag = gameGridModel.gameGrid[0][0].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton01: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "01")
-        button.tag = gameGrid[0][1].tag
+    lazy var gameButton01: GameButton = {
+        let button = AppButtons.gameButton(title: "01")
+        button.tag = gameGridModel.gameGrid[0][1].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton02: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "02")
-        button.tag = gameGrid[0][2].tag
+    lazy var gameButton02: GameButton = {
+        let button = AppButtons.gameButton(title: "02")
+        button.tag = gameGridModel.gameGrid[0][2].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton10: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "10")
-        button.tag = gameGrid[1][0].tag
+    lazy var gameButton10: GameButton = {
+        let button = AppButtons.gameButton(title: "10")
+        button.tag = gameGridModel.gameGrid[1][0].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton11: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "11")
-        button.tag = gameGrid[1][1].tag
+    lazy var gameButton11: GameButton = {
+        let button = AppButtons.gameButton(title: "11")
+        button.tag = gameGridModel.gameGrid[1][1].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton12: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "12")
-        button.tag = gameGrid[1][2].tag
+    lazy var gameButton12: GameButton = {
+        let button = AppButtons.gameButton(title: "12")
+        button.tag = gameGridModel.gameGrid[1][2].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton20: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "20")
-        button.tag = gameGrid[2][0].tag
+    lazy var gameButton20: GameButton = {
+        let button = AppButtons.gameButton(title: "20")
+        button.tag = gameGridModel.gameGrid[2][0].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton21: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "21")
-        button.tag = gameGrid[2][1].tag
+    lazy var gameButton21: GameButton = {
+        let button = AppButtons.gameButton(title: "21")
+        button.tag = gameGridModel.gameGrid[2][1].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
-    lazy var gameButton22: UIButton = {
-        let button = AppButtons.ordinaryButton(title: "22")
-        button.tag = gameGrid[2][2].tag
+    lazy var gameButton22: GameButton = {
+        let button = AppButtons.gameButton(title: "22")
+        button.tag = gameGridModel.gameGrid[2][2].tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
@@ -67,14 +70,6 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-    }
-
-    private var gameGrid: [[GameGridItemModel]] {
-        [
-            [GameGridItemModel(tag: 0), GameGridItemModel(tag: 1), GameGridItemModel(tag: 2)],
-            [GameGridItemModel(tag: 10), GameGridItemModel(tag: 11), GameGridItemModel(tag: 12)],
-            [GameGridItemModel(tag: 20), GameGridItemModel(tag: 21), GameGridItemModel(tag: 22)]
-        ]
     }
 
     private func setupViews() {
@@ -136,7 +131,17 @@ class GameViewController: UIViewController {
 
     @objc
     private func onGameButtonTap(_ sender: UIButton) {
-        print(sender.tag)
+        guard gameGridModel.modifyGridItemPlayer(tag: sender.tag, player: gameModel.player) else { return }
+        sender.setTitle(nil, for: .normal)
+        if gameModel.player == .crosses {
+            sender.setImage(UIImage(systemName: "multiply"), for: .normal)
+            sender.tintColor = .red
+        } else {
+            sender.setImage(UIImage(systemName: "circle"), for: .normal)
+            sender.tintColor = .green
+        }
+        guard let playerToggled = gameModel.player.toggled else { return }
+        gameModel.player = playerToggled
     }
 
 }

@@ -16,4 +16,13 @@ struct AppButtons {
         button.setTitle(title, for: .normal)
         return button
     }
+
+    static func gameButton(title: String) -> GameButton {
+        let button = GameButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(title, for: .normal)
+        return button
+    }
 }
+
+class GameButton: UIButton { }

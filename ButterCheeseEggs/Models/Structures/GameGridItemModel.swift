@@ -9,4 +9,7 @@ import Foundation
 
 struct GameGridItemModel {
     let tag: Int
+    let row: Int
+    let column: Int
+    var player: Players? = nil
 }
