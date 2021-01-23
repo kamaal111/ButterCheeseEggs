@@ -15,8 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.backgroundColor = .systemBackground
-        let viewController = ViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let homeViewController = HomeViewController()
+        let navigationController = UINavigationController(rootViewController: homeViewController)
         window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()

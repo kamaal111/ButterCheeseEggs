@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C5B79FE25BC82C500A55D8A /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B79FD25BC82C500A55D8A /* UIViewController+extensions.swift */; };
+		2CA7552825BC87AA009DDC37 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7552725BC87AA009DDC37 /* GameViewController.swift */; };
 		2CACA22625BB48AF002E3617 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA22525BB48AF002E3617 /* AppDelegate.swift */; };
 		2CACA22825BB48AF002E3617 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA22725BB48AF002E3617 /* SceneDelegate.swift */; };
-		2CACA22A25BB48AF002E3617 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA22925BB48AF002E3617 /* ViewController.swift */; };
+		2CACA22A25BB48AF002E3617 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CACA22925BB48AF002E3617 /* HomeViewController.swift */; };
 		2CACA22F25BB48B2002E3617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CACA22E25BB48B2002E3617 /* Assets.xcassets */; };
 		2CACA23225BB48B2002E3617 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CACA23025BB48B2002E3617 /* LaunchScreen.storyboard */; };
 		2CBC3AC425BC7CC500382516 /* AppButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBC3AC325BC7CC500382516 /* AppButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C5B79FD25BC82C500A55D8A /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
+		2CA7552725BC87AA009DDC37 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		2CACA22225BB48AF002E3617 /* ButterCheeseEggs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButterCheeseEggs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CACA22525BB48AF002E3617 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CACA22725BB48AF002E3617 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CACA22925BB48AF002E3617 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2CACA22925BB48AF002E3617 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		2CACA22E25BB48B2002E3617 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CACA23125BB48B2002E3617 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CACA23325BB48B2002E3617 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +41,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CA7552B25BC87EC009DDC37 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2CBC3AC325BC7CC500382516 /* AppButtons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2CA7552D25BC87FD009DDC37 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2CA7552725BC87AA009DDC37 /* GameViewController.swift */,
+				2CACA22925BB48AF002E3617 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		2CA7552F25BC882D009DDC37 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B79FD25BC82C500A55D8A /* UIViewController+extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2CACA21925BB48AF002E3617 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +85,14 @@
 		2CACA22425BB48AF002E3617 /* ButterCheeseEggs */ = {
 			isa = PBXGroup;
 			children = (
+				2CA7552F25BC882D009DDC37 /* Extensions */,
+				2CA7552D25BC87FD009DDC37 /* Controllers */,
+				2CA7552B25BC87EC009DDC37 /* Views */,
+				2CACA23325BB48B2002E3617 /* Info.plist */,
 				2CACA22525BB48AF002E3617 /* AppDelegate.swift */,
 				2CACA22725BB48AF002E3617 /* SceneDelegate.swift */,
-				2CACA22925BB48AF002E3617 /* ViewController.swift */,
 				2CACA22E25BB48B2002E3617 /* Assets.xcassets */,
 				2CACA23025BB48B2002E3617 /* LaunchScreen.storyboard */,
-				2CACA23325BB48B2002E3617 /* Info.plist */,
-				2CBC3AC325BC7CC500382516 /* AppButtons.swift */,
 			);
 			path = ButterCheeseEggs;
 			sourceTree = "<group>";
@@ -136,9 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CACA22A25BB48AF002E3617 /* ViewController.swift in Sources */,
+				2C5B79FE25BC82C500A55D8A /* UIViewController+extensions.swift in Sources */,
+				2CACA22A25BB48AF002E3617 /* HomeViewController.swift in Sources */,
 				2CACA22625BB48AF002E3617 /* AppDelegate.swift in Sources */,
 				2CACA22825BB48AF002E3617 /* SceneDelegate.swift in Sources */,
+				2CA7552825BC87AA009DDC37 /* GameViewController.swift in Sources */,
 				2CBC3AC425BC7CC500382516 /* AppButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
