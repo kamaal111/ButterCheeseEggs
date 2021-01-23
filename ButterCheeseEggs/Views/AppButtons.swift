@@ -17,12 +17,11 @@ struct AppButtons {
         return button
     }
 
-    static func gameButton(title: String) -> GameButton {
-        let button = GameButton(type: .system)
+    static func gameButton() -> UIButton {
+        let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(title, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.lightGray.cgColor
         return button
     }
 }
-
-class GameButton: UIButton { }
