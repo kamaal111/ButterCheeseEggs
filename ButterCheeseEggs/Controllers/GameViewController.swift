@@ -75,7 +75,11 @@ class GameViewController: UIViewController {
     private func setupViews() {
         self.title = "Game"
         self.navigationItem.largeTitleDisplayMode = .never
-        self.view.backgroundColor = .systemBackground
+        if #available(iOS 13.0, *) {
+            self.view.backgroundColor = .systemBackground
+        } else {
+            self.view.backgroundColor = .white
+        }
 
         self.view.addSubview(gameButton00)
         self.view.addSubview(gameButton01)
@@ -152,12 +156,22 @@ class GameViewController: UIViewController {
         sender.setTitle(nil, for: .normal)
         let imageDimension = UIScreen.main.bounds.size.width / 5
         if gameModel.player == .crosses {
-            let image = UIImage(systemName: "multiply")?.resizeImage(imageDimension, opaque: false)
-            sender.setImage(image, for: .normal)
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "multiply")?.resizeImage(imageDimension, opaque: false)
+                sender.setImage(image, for: .normal)
+            } else {
+                sender.setTitle("X", for: .normal)
+                sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
+            }
             sender.tintColor = .red
         } else {
-            let image = UIImage(systemName: "circle")?.resizeImage(imageDimension, opaque: false)
-            sender.setImage(image, for: .normal)
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "circle")?.resizeImage(imageDimension, opaque: false)
+                sender.setImage(image, for: .normal)
+            } else {
+                sender.setTitle("O", for: .normal)
+                sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
+            }
             sender.tintColor = .green
         }
         guard let playerToggled = gameModel.player.toggled else { return }
@@ -169,6 +183,7 @@ class GameViewController: UIViewController {
 #if DEBUG
 import SwiftUI
 
+@available(iOS 13.0, *)
 struct GameViewController_Previews: PreviewProvider {
     static var previews: some View {
         UINavigationController(rootViewController: GameViewController()).toPreview()

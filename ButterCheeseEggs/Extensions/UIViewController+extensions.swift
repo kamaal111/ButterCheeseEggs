@@ -18,6 +18,7 @@ extension UIViewController {
 #if DEBUG
 import SwiftUI
 
+@available(iOS 13.0, *)
 extension UIViewController {
     private struct Preview: UIViewControllerRepresentable {
         let viewController: UIViewController

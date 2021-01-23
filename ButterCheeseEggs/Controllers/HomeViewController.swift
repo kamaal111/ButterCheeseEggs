@@ -46,6 +46,7 @@ class HomeViewController: UIViewController {
 #if DEBUG
 import SwiftUI
 
+@available(iOS 13.0, *)
 struct HomeViewController_Previews: PreviewProvider {
     static var previews: some View {
         UINavigationController(rootViewController: HomeViewController()).toPreview()
