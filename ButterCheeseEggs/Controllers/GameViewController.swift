@@ -14,6 +14,15 @@ class GameViewController: UIViewController {
 
     private let screenSize = UIScreen.main.bounds.size
 
+    lazy var currentPlayerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "X"
+        label.font = .boldSystemFont(ofSize: 40)
+        label.textColor = .red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     lazy var gameButton00: UIButton = {
         let button = AppButtons.gameButton()
         button.tag = gameGridModelController.getGrid(row: 0, column: 0).tag
@@ -83,6 +92,7 @@ class GameViewController: UIViewController {
             self.view.backgroundColor = .white
         }
 
+        self.view.addSubview(currentPlayerLabel)
         self.view.addSubview(gameButton00)
         self.view.addSubview(gameButton01)
         self.view.addSubview(gameButton02)
@@ -108,21 +118,23 @@ class GameViewController: UIViewController {
             topAnchor = self.view.topAnchor
         }
         let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
 
         NSLayoutConstraint.activate([
-            gameButton00.topAnchor.constraint(equalTo: topAnchor, constant: screenHeight / 6),
+            currentPlayerLabel.topAnchor.constraint(equalTo: topAnchor, constant: 40),
+            currentPlayerLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+
+            gameButton00.topAnchor.constraint(equalTo: currentPlayerLabel.bottomAnchor, constant: 28),
             gameButton00.trailingAnchor.constraint(equalTo: gameButton01.leadingAnchor),
             gameButton00.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton00.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
-            gameButton01.topAnchor.constraint(equalTo: topAnchor, constant: screenHeight / 6),
+            gameButton01.topAnchor.constraint(equalTo: currentPlayerLabel.bottomAnchor, constant: 28),
             gameButton01.centerXAnchor.constraint(equalTo: centerXAnchor),
             gameButton01.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton01.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
             gameButton02.leadingAnchor.constraint(equalTo: gameButton01.trailingAnchor),
-            gameButton02.topAnchor.constraint(equalTo: topAnchor, constant: screenHeight / 6),
+            gameButton02.topAnchor.constraint(equalTo: currentPlayerLabel.bottomAnchor, constant: 28),
             gameButton02.widthAnchor.constraint(equalToConstant: screenWidth / 4),
             gameButton02.heightAnchor.constraint(equalToConstant: screenWidth / 4),
 
@@ -164,8 +176,12 @@ class GameViewController: UIViewController {
         guard let gridItem = gameGridModelController.findGridItem(withTag: sender.tag) else { return }
         if gameModelController.player == .crosses {
             crossesMadeMove(sender)
+            currentPlayerLabel.text = "O"
+            currentPlayerLabel.textColor = .green
         } else {
             noughtsMadeMove(sender)
+            currentPlayerLabel.text = "X"
+            currentPlayerLabel.textColor = .red
         }
         let win = gameModelController.evaluateMove(row: gridItem.row, column: gridItem.column)
         if win {
@@ -186,6 +202,8 @@ class GameViewController: UIViewController {
                     self.gameButton22
                 ]
                 self.gameModelController.resetGame()
+                self.currentPlayerLabel.text = "X"
+                self.currentPlayerLabel.textColor = .red
                 if #available(iOS 13.0, *) {
                     allGameButtons.forEach { (button: UIButton) in
                         button.setImage(nil, for: .normal)
@@ -209,7 +227,7 @@ class GameViewController: UIViewController {
             sender.setImage(image, for: .normal)
         } else {
             sender.setTitle("X", for: .normal)
-            sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
+            sender.titleLabel?.font = .boldSystemFont(ofSize: imageDimension)
         }
         sender.tintColor = .red
     }
@@ -222,7 +240,7 @@ class GameViewController: UIViewController {
             sender.setImage(image, for: .normal)
         } else {
             sender.setTitle("O", for: .normal)
-            sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
+            sender.titleLabel?.font = .boldSystemFont(ofSize: imageDimension)
         }
         sender.tintColor = .green
     }
