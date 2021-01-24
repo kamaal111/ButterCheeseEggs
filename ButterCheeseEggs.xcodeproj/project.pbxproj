@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C2B84EB25BCCAD600BF2D8A /* GameGridModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B84EA25BCCAD600BF2D8A /* GameGridModel.swift */; };
-		2C2B84EE25BCCAF200BF2D8A /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B84ED25BCCAF200BF2D8A /* GameModel.swift */; };
+		2C2B84EB25BCCAD600BF2D8A /* GameGridModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B84EA25BCCAD600BF2D8A /* GameGridModelController.swift */; };
+		2C2B84EE25BCCAF200BF2D8A /* GameModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B84ED25BCCAF200BF2D8A /* GameModelController.swift */; };
 		2C2B84F225BCCB3200BF2D8A /* Players.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B84F125BCCB3200BF2D8A /* Players.swift */; };
 		2C2B84F525BCD5DC00BF2D8A /* UIImage+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2B84F425BCD5DC00BF2D8A /* UIImage+extensions.swift */; };
 		2C5B79FE25BC82C500A55D8A /* UIViewController+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B79FD25BC82C500A55D8A /* UIViewController+extensions.swift */; };
@@ -22,8 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C2B84EA25BCCAD600BF2D8A /* GameGridModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridModel.swift; sourceTree = "<group>"; };
-		2C2B84ED25BCCAF200BF2D8A /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
+		2C2B84EA25BCCAD600BF2D8A /* GameGridModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGridModelController.swift; sourceTree = "<group>"; };
+		2C2B84ED25BCCAF200BF2D8A /* GameModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModelController.swift; sourceTree = "<group>"; };
 		2C2B84F125BCCB3200BF2D8A /* Players.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Players.swift; sourceTree = "<group>"; };
 		2C2B84F425BCD5DC00BF2D8A /* UIImage+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+extensions.swift"; sourceTree = "<group>"; };
 		2C5B79FD25BC82C500A55D8A /* UIViewController+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+extensions.swift"; sourceTree = "<group>"; };
@@ -68,6 +68,8 @@
 		2CA7552D25BC87FD009DDC37 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2C2B84ED25BCCAF200BF2D8A /* GameModelController.swift */,
+				2C2B84EA25BCCAD600BF2D8A /* GameGridModelController.swift */,
 				2CA7552725BC87AA009DDC37 /* GameViewController.swift */,
 				2CACA22925BB48AF002E3617 /* HomeViewController.swift */,
 			);
@@ -118,19 +120,9 @@
 		2CB5DC8525BC98DC00A05A92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2CB5DC8625BC98E300A05A92 /* Structures */,
-				2C2B84EA25BCCAD600BF2D8A /* GameGridModel.swift */,
-				2C2B84ED25BCCAF200BF2D8A /* GameModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		2CB5DC8625BC98E300A05A92 /* Structures */ = {
-			isa = PBXGroup;
-			children = (
 				2CB5DC8725BC98F600A05A92 /* GameGridItemModel.swift */,
 			);
-			path = Structures;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,14 +196,14 @@
 			files = (
 				2C5B79FE25BC82C500A55D8A /* UIViewController+extensions.swift in Sources */,
 				2CACA22A25BB48AF002E3617 /* HomeViewController.swift in Sources */,
-				2C2B84EE25BCCAF200BF2D8A /* GameModel.swift in Sources */,
+				2C2B84EE25BCCAF200BF2D8A /* GameModelController.swift in Sources */,
 				2CACA22625BB48AF002E3617 /* AppDelegate.swift in Sources */,
 				2C2B84F525BCD5DC00BF2D8A /* UIImage+extensions.swift in Sources */,
 				2CB5DC8825BC98F600A05A92 /* GameGridItemModel.swift in Sources */,
 				2C2B84F225BCCB3200BF2D8A /* Players.swift in Sources */,
 				2CA7552825BC87AA009DDC37 /* GameViewController.swift in Sources */,
 				2CBC3AC425BC7CC500382516 /* AppButtons.swift in Sources */,
-				2C2B84EB25BCCAD600BF2D8A /* GameGridModel.swift in Sources */,
+				2C2B84EB25BCCAD600BF2D8A /* GameGridModelController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

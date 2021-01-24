@@ -9,60 +9,62 @@ import UIKit
 
 class GameViewController: UIViewController {
 
-    var gameGridModel = GameGridModel()
-    var gameModel = GameModel()
+    var gameGridModelController = GameGridModelController()
+    var gameModelController = GameModelController()
+
+    private let screenSize = UIScreen.main.bounds.size
 
     lazy var gameButton00: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[0][0].tag
+        button.tag = gameGridModelController.getGrid(row: 0, column: 0).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton01: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[0][1].tag
+        button.tag = gameGridModelController.getGrid(row: 0, column: 1).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton02: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[0][2].tag
+        button.tag = gameGridModelController.getGrid(row: 0, column: 2).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton10: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[1][0].tag
+        button.tag = gameGridModelController.getGrid(row: 1, column: 0).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton11: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[1][1].tag
+        button.tag = gameGridModelController.getGrid(row: 1, column: 1).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton12: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[1][2].tag
+        button.tag = gameGridModelController.getGrid(row: 1, column: 2).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton20: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[2][0].tag
+        button.tag = gameGridModelController.getGrid(row: 2, column: 0).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton21: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[2][1].tag
+        button.tag = gameGridModelController.getGrid(row: 2, column: 1).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
     lazy var gameButton22: UIButton = {
         let button = AppButtons.gameButton()
-        button.tag = gameGridModel.gameGrid[2][2].tag
+        button.tag = gameGridModelController.getGrid(row: 2, column: 2).tag
         button.addTarget(self, action: #selector(onGameButtonTap), for: .touchUpInside)
         return button
     }()
@@ -105,7 +107,6 @@ class GameViewController: UIViewController {
             centerXAnchor = self.view.centerXAnchor
             topAnchor = self.view.topAnchor
         }
-        let screenSize = UIScreen.main.bounds.size
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
 
@@ -159,30 +160,39 @@ class GameViewController: UIViewController {
 
     @objc
     private func onGameButtonTap(_ sender: UIButton) {
-        guard gameGridModel.modifyGridItem(tag: sender.tag, player: gameModel.player) else { return }
-        sender.setTitle(nil, for: .normal)
-        let imageDimension = UIScreen.main.bounds.size.width / 5
-        if gameModel.player == .crosses {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "multiply")?.resizeImage(imageDimension, opaque: false)
-                sender.setImage(image, for: .normal)
-            } else {
-                sender.setTitle("X", for: .normal)
-                sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
-            }
-            sender.tintColor = .red
+        guard gameGridModelController.modifyGridItem(tag: sender.tag, player: gameModelController.player) else { return }
+        if gameModelController.currentPlayer == .crosses {
+            crossesMadeMove(sender)
         } else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "circle")?.resizeImage(imageDimension, opaque: false)
-                sender.setImage(image, for: .normal)
-            } else {
-                sender.setTitle("O", for: .normal)
-                sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
-            }
-            sender.tintColor = .green
+            noughtsMadeMove(sender)
         }
-        guard let playerToggled = gameModel.player.toggled else { return }
-        gameModel.player = playerToggled
+        gameModelController.togglePlayer()
+    }
+
+    private func crossesMadeMove(_ sender: UIButton) {
+        let imageDimension = screenSize.width / 5
+        if #available(iOS 13.0, *) {
+            sender.setTitle(nil, for: .normal)
+            let image = UIImage(systemName: "multiply")?.resizeImage(imageDimension, opaque: false)
+            sender.setImage(image, for: .normal)
+        } else {
+            sender.setTitle("X", for: .normal)
+            sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
+        }
+        sender.tintColor = .red
+    }
+
+    private func noughtsMadeMove(_ sender: UIButton) {
+        let imageDimension = screenSize.width / 5
+        if #available(iOS 13.0, *) {
+            sender.setTitle(nil, for: .normal)
+            let image = UIImage(systemName: "circle")?.resizeImage(imageDimension, opaque: false)
+            sender.setImage(image, for: .normal)
+        } else {
+            sender.setTitle("O", for: .normal)
+            sender.titleLabel?.font = UIFont.systemFont(ofSize: imageDimension)
+        }
+        sender.tintColor = .green
     }
 
 }
