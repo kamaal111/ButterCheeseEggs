@@ -23,15 +23,6 @@ class GameGridModelController {
         gameGridModel[row][column]
     }
 
-    func modifyGridItem(row: Int, column: Int, player: Players) -> Bool {
-        let gridItem = getGrid(row: row, column: column)
-        guard gridItem.player == nil else { return false }
-        let row = gridItem.row
-        let column = gridItem.column
-        self.gameGridModel[row][column] = GameGridItemModel(tag: gridItem.tag, row: row, column: column, player: player)
-        return true
-    }
-
     func findGridItem(withTag tag: Int) -> GameGridItemModel? {
         let gridItem: GameGridItemModel?
         if tag < 3 {

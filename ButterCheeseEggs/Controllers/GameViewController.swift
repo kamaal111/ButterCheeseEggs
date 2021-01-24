@@ -161,17 +161,44 @@ class GameViewController: UIViewController {
     @objc
     private func onGameButtonTap(_ sender: UIButton) {
         guard !gameModelController.gameWon else { return }
-        guard let gridItem = gameGridModelController.findGridItem(withTag: sender.tag),
-              gameGridModelController.modifyGridItem(row: gridItem.row,
-                                                     column: gridItem.column,
-                                                     player: gameModelController.player) else { return }
+        guard let gridItem = gameGridModelController.findGridItem(withTag: sender.tag) else { return }
         if gameModelController.player == .crosses {
             crossesMadeMove(sender)
         } else {
             noughtsMadeMove(sender)
         }
         let win = gameModelController.evaluateMove(row: gridItem.row, column: gridItem.column)
-        print(win, gameModelController.player)
+        if win {
+            let alertController = UIAlertController(title: "Game Over",
+                                                    message: "\(gameModelController.player.string ?? "") won",
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Restart", style: .default, handler: { [weak self] (action: UIAlertAction) in
+                guard let self = self else { return }
+                let allGameButtons = [
+                    self.gameButton00,
+                    self.gameButton01,
+                    self.gameButton02,
+                    self.gameButton10,
+                    self.gameButton11,
+                    self.gameButton12,
+                    self.gameButton20,
+                    self.gameButton21,
+                    self.gameButton22
+                ]
+                self.gameModelController.resetGame()
+                if #available(iOS 13.0, *) {
+                    allGameButtons.forEach { (button: UIButton) in
+                        button.setImage(nil, for: .normal)
+                    }
+                } else {
+                    allGameButtons.forEach { (button: UIButton) in
+                        button.setTitle(nil, for: .normal)
+                    }
+                }
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            self.present(alertController, animated: true)
+        }
     }
 
     private func crossesMadeMove(_ sender: UIButton) {

@@ -21,6 +21,16 @@ class GameModelController {
         ]
     }
 
+    func resetGame() {
+        player = .crosses
+        plays = [
+            [nil, nil, nil],
+            [nil, nil, nil],
+            [nil, nil, nil]
+        ]
+        gameWon = false
+    }
+
     func evaluateMove(row: Int, column: Int) -> Bool {
         guard !gameWon else { return true }
         plays[row][column] = player

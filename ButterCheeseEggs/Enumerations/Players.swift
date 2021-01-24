@@ -22,4 +22,14 @@ extension Players {
             return nil
         }
     }
+
+    var string: String? {
+        if self == .crosses {
+            return "crosses"
+        } else if self == .noughts {
+            return "noughts"
+        } else {
+            return nil
+        }
+    }
 }
