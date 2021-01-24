@@ -160,13 +160,18 @@ class GameViewController: UIViewController {
 
     @objc
     private func onGameButtonTap(_ sender: UIButton) {
-        guard gameGridModelController.modifyGridItem(tag: sender.tag, player: gameModelController.player) else { return }
-        if gameModelController.currentPlayer == .crosses {
+        guard !gameModelController.gameWon else { return }
+        guard let gridItem = gameGridModelController.findGridItem(withTag: sender.tag),
+              gameGridModelController.modifyGridItem(row: gridItem.row,
+                                                     column: gridItem.column,
+                                                     player: gameModelController.player) else { return }
+        if gameModelController.player == .crosses {
             crossesMadeMove(sender)
         } else {
             noughtsMadeMove(sender)
         }
-        gameModelController.togglePlayer()
+        let win = gameModelController.evaluateMove(row: gridItem.row, column: gridItem.column)
+        print(win, gameModelController.player)
     }
 
     private func crossesMadeMove(_ sender: UIButton) {
